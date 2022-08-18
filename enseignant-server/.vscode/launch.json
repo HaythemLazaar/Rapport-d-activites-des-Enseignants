@@ -2,10 +2,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Spring Boot-EnseignantApplication<spring-boot-jdbctemplate-oracle>",
+            "name": "Spring Boot-SpringBootJdbctemplateOracleApplication<spring-boot-jdbctemplate-oracle>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "mainClass": "com.enseignant.spring.jdbc.oracle.EnseignantApplication",
+            "mainClass": "com.bezkoder.spring.jdbc.oracle.SpringBootJdbctemplateOracleApplication",
             "projectName": "spring-boot-jdbctemplate-oracle",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
