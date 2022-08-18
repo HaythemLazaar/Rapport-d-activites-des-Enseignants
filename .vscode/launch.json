@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-EnseignantApplication<enseignant>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.esprit.enseignant.EnseignantApplication",
+            "projectName": "enseignant",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EnseignantApplication<spring-boot-jdbctemplate-oracle>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.enseignant.spring.jdbc.oracle.EnseignantApplication",
+            "projectName": "spring-boot-jdbctemplate-oracle",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
