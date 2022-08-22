@@ -9,7 +9,21 @@ public class Encadrement {
     private String date_encadrement;
     private long duree;
     private long id_enseignant;
+    private int type;
+    private String description;
     
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public int getType() {
+        return type;
+    }
+    public void setType(int type) {
+        this.type = type;
+    }
     public long getId_enseignant() {
         return id_enseignant;
     }

@@ -14,6 +14,7 @@ function App() {
   const [selectedEnseignant, setSelectedEnseignant] = useState()
   const [dataEnseignant, setDataEnseignant] = useState({})
   const [activitesEnseignant, setActivitesEnseignant] = useState()
+  const [activitesEncadrement, setActivitesEncadrement] = useState()
 
   const getEnseignementsByID = () => {
     ActivitesDataService.getEnseignements(selectedEnseignant)
@@ -25,6 +26,18 @@ function App() {
         console.log(err)
     })
   }
+
+  const getEncadrementByID = () => {
+    ActivitesDataService.getEncadrements(selectedEnseignant)
+    .then((res) =>{
+        console.log(res.data)
+        setActivitesEncadrement(res.data)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+  }
+
 
   const getEnseignants = () => {
       EnseignantDataService.getAll()
@@ -56,8 +69,9 @@ function App() {
 
   useEffect(() => {
     //Reactivates every time the selected option changes
-    getEnseignementsByID()
     getEnseignantByID()
+    getEnseignementsByID()
+    getEncadrementByID()
   }, [selectedEnseignant])
 
   return (
@@ -72,7 +86,7 @@ function App() {
               <h1>Selected:</h1>
               <EnseignantCard ens={dataEnseignant} />
               <h1>Activites d'Enseignement :</h1>
-              <RapportActivites activitesEnseignant={activitesEnseignant} />
+              <RapportActivites activitesEnseignant={activitesEnseignant} activitesEncadrement={activitesEncadrement}/>
             </> : <h1>No enseignant selected</h1>}
       </div>
     </div>

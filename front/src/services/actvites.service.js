@@ -6,6 +6,10 @@ class ActivitesDataService{
     return axios.get(`http://localhost:8080/api/enseignants/${id}/ens`)
   }
 
+  getEncadrements(id){
+    return axios.get(`http://localhost:8080/api/enseignants/${id}/enc`)
+  }
+
 }
 
 

@@ -18,8 +18,12 @@ h1{
   text-align: center;
 }
 
+.rapport-section{
+  max-width: 500px;
+}
+
 .activites-table{
-  max-width: 400px;
+  max-width: 500px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(1, 1fr);
@@ -31,6 +35,7 @@ h1{
 }
 
 .table-content {
+  max-width: 500px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 0px;
@@ -40,7 +45,12 @@ h1{
   padding-block: 0.8rem;
   }
 
+.table-content > p {
+  padding: 0.3rem 0;
+}
+
 .table-footer{
+  max-width: 500px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 0px;
