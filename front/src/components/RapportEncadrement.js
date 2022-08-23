@@ -1,8 +1,8 @@
 import React from 'react'
 
 function RapportEncadrement(props) {
-    let totalHeuresEns1 = 0
-    let totalHeuresEns2 = 0
+    let totalHeuresEnc1 = 0
+    let totalHeuresEnc2 = 0
     return (
         <>
         <div className='rapport-pfe'>
@@ -16,7 +16,8 @@ function RapportEncadrement(props) {
                 {props.activitesEncadrement != null ? 
                 props.activitesEncadrement.filter(act => act.type == 1).map(function(act){
                     let d = '11/02/22'
-                    totalHeuresEns1 += act.duree
+                    totalHeuresEnc1 += act.duree
+                    props.handleTotalPFE(totalHeuresEnc1)
                     return(
                     <>
                         <p>{act.description}</p>
@@ -28,7 +29,7 @@ function RapportEncadrement(props) {
             <div className='table-footer'>
                 <div></div>
                 <div><p>Total :</p></div>
-                <div>{totalHeuresEns1}</div>
+                <div>{totalHeuresEnc1}</div>
             </div>
         </div>
         <div className='rapport-pi'>
@@ -42,7 +43,8 @@ function RapportEncadrement(props) {
                 {props.activitesEncadrement != null ? 
                 props.activitesEncadrement.filter(act => act.type == 2).map(function(act){
                     let d = '11/02/22'
-                    totalHeuresEns2 += act.duree
+                    totalHeuresEnc2 += act.duree
+                    props.handleTotalPI(totalHeuresEnc2)
                     return(
                     <>
                         <p>{act.description}</p>
@@ -54,7 +56,7 @@ function RapportEncadrement(props) {
             <div className='table-footer'>
                 <div></div>
                 <div><p>Total :</p></div>
-                <div>{totalHeuresEns2}</div>
+                <div>{totalHeuresEnc2}</div>
             </div>
         </div>
         </>

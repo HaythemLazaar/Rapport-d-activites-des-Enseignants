@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function RapportEnseignement(props) {
     let totalHeuresEns = 0
   return (
     <>
+    <h1>Activites d'Enseignement :</h1>
     <div className='activites-table'>
         <h4>Module</h4>
         <h4>Date</h4>
@@ -14,6 +15,7 @@ function RapportEnseignement(props) {
           props.activitesEnseignant.map(function(act){
             let d = '11/02/22'
             totalHeuresEns += act.duree
+            props.handleTotalEns(totalHeuresEns)
             return(
               <>
                   <p>{act.module}</p>
