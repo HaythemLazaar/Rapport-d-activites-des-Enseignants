@@ -9,6 +9,16 @@
             "projectName": "spring-boot-jdbctemplate-oracle",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EnseignantApplication<spring-boot-jdbctemplate-oracle>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.enseignant.spring.jdbc.oracle.EnseignantApplication",
+            "projectName": "spring-boot-jdbctemplate-oracle",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

@@ -1,32 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import RapportEncadrement from './RapportEncadrement'
+import RapportEnseignement from './RapportEnseignement'
+
+
 
 function RapportActivites(props) {
-  let totalHeuresEns = 0
+  const [totalHeuresEns, setTotalHeuresEns] = useState(0)
+  const [totalHeuresPFE, setTotalHeuresPFE] = useState(0)
+  const [totalHeuresPI, setTotalHeuresPI] = useState(0)
+
+  const data = [
+    { name: 'Enseignement', value: totalHeuresEns },
+    { name: 'PFE', value: totalHeuresPFE },
+    { name: 'PI', value: totalHeuresPI },
+    
+  ];
+
+  useEffect(() => {
+    props.handleTotalActivites(data)
+  }, [totalHeuresEns,totalHeuresPFE,totalHeuresPI])
+  
+  
+
   return (
-    <div>
-      <div className='activites-table'>
-        <h4>Module</h4>
-        <h4>Date</h4>
-        <h4>Duree</h4>
-      </div>
-      <div className='table-content'> 
-        {props.activitesEnseignant != null ? 
-          props.activitesEnseignant.map(function(act){
-            let d = '11/02/22'
-            totalHeuresEns += act.duree
-            return(
-              <>
-                  <p>{act.module}</p>
-                  <p>{act.date_cours}</p>
-                  <p>{act.duree}</p>
-              </> 
-        )}) : <h1>No</h1>}
-      </div>
-      <div className='table-footer'>
-        <div></div>
-        <div><p>Total :</p></div>
-        <div>{totalHeuresEns}</div>
-      </div>
+    <div className='rapport-section'>
+      <RapportEnseignement 
+        activitesEnseignant={props.activitesEnseignant} 
+        handleTotalEns={setTotalHeuresEns} 
+      />
+      <RapportEncadrement 
+        activitesEncadrement={props.activitesEncadrement} 
+        handleTotalPFE={setTotalHeuresPFE} 
+        handleTotalPI={setTotalHeuresPI} 
+      />
     </div>
   )
 }

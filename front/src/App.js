@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import EnseignantsList from './components/EnseignantsList';
-import axios from 'axios'
 import EnseignantDataService from './services/enseignant.service';
 import ActivitesDataService from './services/actvites.service'
 import RapportActivites from './components/RapportActivites';
 import EnseignantCard from './components/EnseignantCard';
+import RapportChart from './components/RapportChart';
 
 
 
@@ -14,6 +14,8 @@ function App() {
   const [selectedEnseignant, setSelectedEnseignant] = useState()
   const [dataEnseignant, setDataEnseignant] = useState({})
   const [activitesEnseignant, setActivitesEnseignant] = useState()
+  const [activitesEncadrement, setActivitesEncadrement] = useState()
+  const [totalActivites, setTotalActivites] = useState([])
 
   const getEnseignementsByID = () => {
     ActivitesDataService.getEnseignements(selectedEnseignant)
@@ -26,15 +28,15 @@ function App() {
     })
   }
 
-  const getEnseignants = () => {
-      EnseignantDataService.getAll()
-      .then((res) =>{
-          console.log(res.data)
-          setEnseignants(res.data)
-      })
-      .catch((err) => {
-          console.log(err);
-        });
+  const getEncadrementByID = () => {
+    ActivitesDataService.getEncadrements(selectedEnseignant)
+    .then((res) =>{
+        console.log(res.data)
+        setActivitesEncadrement(res.data)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
   }
 
   const getEnseignantByID = () => {
@@ -50,14 +52,26 @@ function App() {
     }
   } 
 
+  const getEnseignants = () => {
+      EnseignantDataService.getAll()
+      .then((res) =>{
+          console.log(res.data)
+          setEnseignants(res.data)
+      })
+      .catch((err) => {
+          console.log(err);
+        });
+  }
+
   useEffect(() => {
     getEnseignants()
   }, [])
 
   useEffect(() => {
     //Reactivates every time the selected option changes
-    getEnseignementsByID()
     getEnseignantByID()
+    getEnseignementsByID()
+    getEncadrementByID()
   }, [selectedEnseignant])
 
   return (
@@ -71,8 +85,12 @@ function App() {
             <>
               <h1>Selected:</h1>
               <EnseignantCard ens={dataEnseignant} />
-              <h1>Activites d'Enseignement :</h1>
-              <RapportActivites activitesEnseignant={activitesEnseignant} />
+              <RapportChart activitesData={totalActivites} />
+              <RapportActivites 
+                activitesEnseignant={activitesEnseignant} 
+                activitesEncadrement={activitesEncadrement} 
+                handleTotalActivites={setTotalActivites}
+              />
             </> : <h1>No enseignant selected</h1>}
       </div>
     </div>
